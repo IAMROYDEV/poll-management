@@ -17,7 +17,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
                             {!! trans('pollsmanagement.create-new-poll') !!}
                             <div class="pull-right">
-                                <a href="{{ route('polls') }}" class="btn btn-light btn-sm float-right" data-toggle="tooltip" data-placement="left" title="{{ trans('pollsmanagement.tooltips.back-polls') }}">
+                                <a href="/polls" class="btn btn-light btn-sm float-right" data-toggle="tooltip" data-placement="left" title="{{ trans('pollsmanagement.tooltips.back-polls') }}">
                                     <i class="fa fa-fw fa-reply-all" aria-hidden="true"></i>
                                     {!! trans('pollsmanagement.buttons.back-to-polls') !!}
                                 </a>

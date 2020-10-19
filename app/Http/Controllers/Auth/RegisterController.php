@@ -35,7 +35,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/activate';
+    protected $redirectTo = '/login';
 
     /**
      * Create a new controller instance.
@@ -58,7 +58,6 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        $data['captcha'] = $this->captchaCheck();
 
         if (! config('settings.reCaptchStatus')) {
             $data['captcha'] = true;
@@ -73,8 +72,6 @@ class RegisterController extends Controller
                 'email'                 => 'required|email|max:255|unique:users',
                 'password'              => 'required|min:6|max:30|confirmed',
                 'password_confirmation' => 'required|same:password',
-                'g-recaptcha-response'  => '',
-                'captcha'               => 'required|min:1',
             ],
             [
                 'name.unique'                   => trans('auth.userNameTaken'),
@@ -86,8 +83,6 @@ class RegisterController extends Controller
                 'password.required'             => trans('auth.passwordRequired'),
                 'password.min'                  => trans('auth.PasswordMin'),
                 'password.max'                  => trans('auth.PasswordMax'),
-                'g-recaptcha-response.required' => trans('auth.captchaRequire'),
-                'captcha.min'                   => trans('auth.CaptchaWrong'),
             ]
         );
     }
@@ -123,7 +118,6 @@ class RegisterController extends Controller
         ]);
 
         $user->attachRole($role);
-        $this->initiateEmailActivation($user);
 
         $profile = new Profile();
         $user->profile()->save($profile);
