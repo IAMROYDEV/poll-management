@@ -1,6 +1,6 @@
 
 ### Installation Instructions
-1. Run `git clone https://github.com/jeremykenedy/laravel-auth.git laravel-auth`
+1. Run `git clone https://github.com/IAMROYDEV/poll-management.git poll-management`
 2. Create a MySQL database for the project
     * ```mysql -u root -p```, if using Vagrant: ```mysql -u homestead -psecret```
     * ```create database poll-management;```
